@@ -1,0 +1,19 @@
+extends layout
+
+block content
+  h1= title
+  p Selecciona un alumno
+
+  .input 
+    span.label Alumno 
+    select#lista-alumnos
+
+  div#bloque-puntuacion(style='display:none')
+    span.label Puntuación actual:
+    span.label#puntuacion
+
+    div#botones-puntuar
+    input(type="button", value="+2", puntos=+2)
+    input(type="button", value="+5", puntos=+5)
+    input(type="button", value="-2", puntos=-2)
+    input(type="button", value="-5", puntos=-5)
