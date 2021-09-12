@@ -24,13 +24,15 @@ router.get('/alumno', function(req, res, next) {
   }
 });
 
-router.post("puntuar", function(req, res, next) {
-  var nombreAlumno = req.query.alumno.trim().toLocaleLowerCase();
-  var alumno = bd.find(function(a) { return a.nombre.toLocaleLowerCase() === nombreAlumno});
-
-  if(alumno) {
-    db[alumno].puntuacion += req.query.pun;
-    res.json(alumno);
+router.get("/puntuar", function(req, res, next) {
+  var nombreAlumno = req.query.a.trim().toLocaleLowerCase();
+  var puntos = parseInt(req.query.p);
+  var indiceAlumno = bd.findIndex(function(a) { return a.nombre.toLocaleLowerCase() === nombreAlumno});
+  
+  if(indiceAlumno >= 0) {
+    bd[indiceAlumno].puntuacion += puntos;
+    console.log(bd[indiceAlumno]);
+    res.json(bd[indiceAlumno]);
   } else {
     res.status(404).send({ error: "Alumno no encontrado."});
   }
