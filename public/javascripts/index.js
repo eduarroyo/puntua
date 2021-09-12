@@ -16,7 +16,7 @@ function cargarCombo(err, alumnos) {
     
     for(i = 0; i < alumnos.length; i++) {
         el = document.createElement("option");
-        el.textContent = alumnos[i];
+        el.textContent = alumnos[i].nombre;
         combo.appendChild(el);
     }
 }
